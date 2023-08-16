@@ -3,6 +3,7 @@ package com.betrybe.agrix.service;
 import com.betrybe.agrix.models.entities.Crop;
 import com.betrybe.agrix.models.entities.Fertilizer;
 import com.betrybe.agrix.models.repositories.CropRepository;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,7 +71,7 @@ public class CropService {
     return cropRepository.findAll();
   }
 
-//  public List<Fertilizer> getAllFertilizers() {
-//
-//  }
+  public List<Crop> getCropsBetweenDates(LocalDate start, LocalDate end) {
+    return cropRepository.findByDateBetween(start, end);
+  }
 }
