@@ -1,4 +1,4 @@
-package com.betrybe.agrix.unit;
+package com.betrybe.agrix.solution.unit;
 
 import com.betrybe.agrix.ebytr.staff.entity.Person;
 import com.betrybe.agrix.ebytr.staff.exception.PersonNotFoundException;
@@ -63,7 +63,7 @@ public class PersonServiceTest {
 
   @Test
   @DisplayName("2. Teste para trazer uma pessoa por um id.")
-  public void testGetPerson() {
+  public void testGetPersonById() {
     // new person
     Person person = new Person();
     person.setId(123L);
@@ -97,4 +97,42 @@ public class PersonServiceTest {
 
     Mockito.verify(personRepository).findById(eq(123L));
   }
+
+  @Test
+  @DisplayName("4. Teste para trazer uma pessoa por um username.")
+  public void testGetPersonByUsername() {
+    // new person
+    Person person = new Person();
+    person.setId(123L);
+    person.setUsername("luiz");
+    person.setPassword("1234");
+    person.setRole(Role.USER);
+
+    // mock de retorno
+    Mockito.when(personRepository.findByUsername((eq("luiz"))))
+        .thenReturn(Optional.of(person));
+
+    Person returneddPerson = personService.getPersonByUsername("luiz");
+
+    // service foi chamada?
+    Mockito.verify(personRepository).findByUsername(eq("luiz"));
+
+    // validação
+    assertEquals(returneddPerson.getId(), person.getId());
+    assertEquals(returneddPerson.getUsername(), person.getUsername());
+    assertEquals(returneddPerson.getPassword(), person.getPassword());
+    assertEquals(returneddPerson.getRole(), person.getRole());
+  }
+
+  @Test
+  @DisplayName("5. Test para trazer um error ao buscar por username de uma pessoa com o repository mockado.")
+  public void testGetPersonByUsernameNotFound() {
+    Mockito.when(personRepository.findById(anyLong()))
+        .thenReturn(Optional.empty());
+
+    assertThrows(PersonNotFoundException.class, () -> personService.getPersonByUsername("lui"));
+
+    Mockito.verify(personRepository).findByUsername(eq("lui"));
+  }
+
 }
