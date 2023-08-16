@@ -29,6 +29,9 @@ public class Crop {
   @Column(name = "planted_date")
   private LocalDate plantedDate;
 
+  @Column(name = "harvest_date")
+  private LocalDate harvestDate;
+
   public Crop() {
 
   }
@@ -36,12 +39,13 @@ public class Crop {
   /**
    * Crop entity constructor.
    */
-  public Crop(Long id, Long farmId, String name, Double plantedArea, LocalDate plantedDate) {
+  public Crop(Long id, Long farmId, String name, Double plantedArea, LocalDate plantedDate, LocalDate harvestDate) {
     this.id = id;
     this.farmId = farmId;
     this.name = name;
     this.plantedArea = plantedArea;
     this.plantedDate = plantedDate;
+    this.harvestDate = harvestDate;
   }
 
   public Long getId() {
@@ -82,5 +86,13 @@ public class Crop {
 
   public void setPlantedDate(LocalDate plantedDate) {
     this.plantedDate = plantedDate;
+  }
+
+  public LocalDate getHarvestDate() {
+    return harvestDate;
+  }
+
+  public void setHarvestDate(LocalDate harvestDate) {
+    this.harvestDate = harvestDate;
   }
 }

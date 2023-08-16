@@ -71,7 +71,8 @@ public class CropController {
     List listaStream = allCrops.stream()
         .filter(crop -> crop.getFarmId().equals(farmId))
         .map((crop) -> new CropDto(
-            crop.getId(), crop.getName(), crop.getFarmId(), crop.getPlantedArea(), crop.getPlantedDate()))
+            crop.getId(), crop.getName(), crop.getFarmId(),
+            crop.getPlantedArea(), crop.getPlantedDate(), crop.getHarvestDate()))
         .collect(Collectors.toList());
 
     return  ResponseEntity.ok(listaStream);
@@ -135,7 +136,8 @@ public class CropController {
     List<Crop> allCrops = cropService.getAllCrops();
     return allCrops.stream()
         .map((crop) -> new CropDto(
-            crop.getId(), crop.getName(), crop.getFarmId(), crop.getPlantedArea(), crop.getPlantedDate()))
+            crop.getId(), crop.getName(), crop.getFarmId(),
+            crop.getPlantedArea(), crop.getPlantedDate(), crop.getHarvestDate()))
         .collect(Collectors.toList());
   }
 
