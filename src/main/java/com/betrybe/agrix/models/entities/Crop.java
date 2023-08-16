@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 
 /**
  * Crop entity.
@@ -25,6 +26,9 @@ public class Crop {
   @Column(name = "planted_area")
   private Double plantedArea;
 
+  @Column(name = "planted_date")
+  private LocalDate plantedDate;
+
   public Crop() {
 
   }
@@ -32,11 +36,12 @@ public class Crop {
   /**
    * Crop entity constructor.
    */
-  public Crop(Long id, Long farmId, String name, Double plantedArea) {
+  public Crop(Long id, Long farmId, String name, Double plantedArea, LocalDate plantedDate) {
     this.id = id;
     this.farmId = farmId;
     this.name = name;
     this.plantedArea = plantedArea;
+    this.plantedDate = plantedDate;
   }
 
   public Long getId() {
@@ -69,5 +74,13 @@ public class Crop {
 
   public void setPlantedArea(Double plantedArea) {
     this.plantedArea = plantedArea;
+  }
+
+  public LocalDate getPlantedDate() {
+    return plantedDate;
+  }
+
+  public void setPlantedDate(LocalDate plantedDate) {
+    this.plantedDate = plantedDate;
   }
 }
