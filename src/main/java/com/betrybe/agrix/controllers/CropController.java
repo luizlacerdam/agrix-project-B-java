@@ -6,6 +6,7 @@ import com.betrybe.agrix.models.entities.Crop;
 import com.betrybe.agrix.models.entities.Farm;
 import com.betrybe.agrix.service.CropService;
 import com.betrybe.agrix.service.FarmService;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -139,6 +141,26 @@ public class CropController {
             crop.getId(), crop.getName(), crop.getFarmId(),
             crop.getPlantedArea(), crop.getPlantedDate(), crop.getHarvestDate()))
         .collect(Collectors.toList());
+  }
+
+  /**
+   * Encontra todas crops com data entre.
+   */
+  @GetMapping("/crops/search")
+  public List<CropDto> getAllCropsByDate(
+      @RequestParam LocalDate start,
+      @RequestParam LocalDate end) {
+    List<Crop> allCrops = cropService.getAllCrops();
+    return allCrops.stream()
+        .filter(crop -> crop.getPlantedDate().isEqual(start)
+            ||
+            crop.getHarvestDate().isEqual(end)
+            ||
+            (crop.getPlantedDate().isAfter(start) && crop.getHarvestDate().isBefore(end)))
+        .map((crop -> new CropDto(
+            crop.getId(), crop.getName(), crop.getFarmId(),
+            crop.getPlantedArea(), crop.getPlantedDate(), crop.getHarvestDate()
+        ))).collect(Collectors.toList());
   }
 
 }

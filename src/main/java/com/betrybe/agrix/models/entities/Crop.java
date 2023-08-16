@@ -39,7 +39,8 @@ public class Crop {
   /**
    * Crop entity constructor.
    */
-  public Crop(Long id, Long farmId, String name, Double plantedArea, LocalDate plantedDate, LocalDate harvestDate) {
+  public Crop(Long id, Long farmId, String name,
+      Double plantedArea, LocalDate plantedDate, LocalDate harvestDate) {
     this.id = id;
     this.farmId = farmId;
     this.name = name;
