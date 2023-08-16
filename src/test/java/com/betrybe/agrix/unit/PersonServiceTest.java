@@ -1,6 +1,7 @@
 package com.betrybe.agrix.unit;
 
 import com.betrybe.agrix.ebytr.staff.entity.Person;
+import com.betrybe.agrix.ebytr.staff.exception.PersonNotFoundException;
 import com.betrybe.agrix.ebytr.staff.repository.PersonRepository;
 import com.betrybe.agrix.ebytr.staff.security.Role;
 import com.betrybe.agrix.ebytr.staff.service.PersonService;
@@ -11,9 +12,12 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
 
 @SpringBootTest
@@ -81,5 +85,16 @@ public class PersonServiceTest {
     assertEquals(returneddPerson.getUsername(), person.getUsername());
     assertEquals(returneddPerson.getPassword(), person.getPassword());
     assertEquals(returneddPerson.getRole(), person.getRole());
+  }
+
+  @Test
+  @DisplayName("3. Test para trazer um error ao buscar por id de uma pessoa com o repository mockado.")
+  public void testGetPersonNotFound() {
+    Mockito.when(personRepository.findById(anyLong()))
+        .thenReturn(Optional.empty());
+
+    assertThrows(PersonNotFoundException.class, () -> personService.getPersonById(123L));
+
+    Mockito.verify(personRepository).findById(eq(123L));
   }
 }
