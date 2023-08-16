@@ -4,8 +4,10 @@ import com.betrybe.agrix.controllers.dto.CropDto;
 import com.betrybe.agrix.controllers.dto.ResponseDto;
 import com.betrybe.agrix.models.entities.Crop;
 import com.betrybe.agrix.models.entities.Farm;
+import com.betrybe.agrix.models.entities.Fertilizer;
 import com.betrybe.agrix.service.CropService;
 import com.betrybe.agrix.service.FarmService;
+import com.betrybe.agrix.service.FertilizerService;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -34,13 +36,16 @@ public class CropController {
 
   private FarmService farmService;
 
+  private FertilizerService fertilizerService;
+
   /**
    * Crop controller constructor.
    */
   @Autowired
-  public CropController(CropService cropService, FarmService farmService) {
+  public CropController(CropService cropService, FarmService farmService, FertilizerService fertilizerService) {
     this.cropService = cropService;
     this.farmService = farmService;
+    this.fertilizerService = fertilizerService;
   }
 
   /**
@@ -163,4 +168,8 @@ public class CropController {
         ))).collect(Collectors.toList());
   }
 
+  @PostMapping("/crops/{cropId}/fertilizers/{fertilizerId}")
+  public ResponseEntity<String> associateFertilizeToCrop() {
+  return null;
+  }
 }
