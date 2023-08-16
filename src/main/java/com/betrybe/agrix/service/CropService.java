@@ -71,7 +71,4 @@ public class CropService {
     return cropRepository.findAll();
   }
 
-  public List<Crop> getCropsBetweenDates(LocalDate start, LocalDate end) {
-    return cropRepository.findByDateBetween(start, end);
-  }
 }

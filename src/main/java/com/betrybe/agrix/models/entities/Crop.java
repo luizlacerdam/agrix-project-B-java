@@ -110,11 +110,4 @@ public class Crop {
     this.harvestDate = harvestDate;
   }
 
-  public List<Fertilizer> getFertilizers() {
-    return fertilizers;
-  }
-
-  public void setFertilizers(List<Fertilizer> fertilizers) {
-    this.fertilizers = fertilizers;
-  }
 }

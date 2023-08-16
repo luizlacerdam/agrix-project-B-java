@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CropRepository extends JpaRepository<Crop, Long> {
-  List<Crop> findByDateBetween(LocalDate start, LocalDate end);
+
 }

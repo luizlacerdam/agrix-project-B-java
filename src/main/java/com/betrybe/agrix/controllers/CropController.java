@@ -156,13 +156,13 @@ public class CropController {
   public List<CropDto> getAllCropsByDate(
       @RequestParam LocalDate start,
       @RequestParam LocalDate end) {
+
     List<Crop> allCrops = cropService.getAllCrops();
+
     return allCrops.stream()
-        .filter(crop -> crop.getPlantedDate().isEqual(start)
-            ||
-            crop.getHarvestDate().isEqual(end)
-            ||
-            (crop.getPlantedDate().isAfter(start) && crop.getHarvestDate().isBefore(end)))
+        .filter(crop -> crop.getHarvestDate().isAfter(start)
+            &&
+                crop.getHarvestDate().isBefore(end))
         .map((crop -> new CropDto(
             crop.getId(), crop.getName(), crop.getFarmId(),
             crop.getPlantedArea(), crop.getPlantedDate(), crop.getHarvestDate()
