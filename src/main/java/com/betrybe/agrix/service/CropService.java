@@ -1,6 +1,7 @@
 package com.betrybe.agrix.service;
 
 import com.betrybe.agrix.models.entities.Crop;
+import com.betrybe.agrix.models.entities.Fertilizer;
 import com.betrybe.agrix.models.repositories.CropRepository;
 import java.util.List;
 import java.util.Optional;
@@ -69,4 +70,7 @@ public class CropService {
     return cropRepository.findAll();
   }
 
+//  public List<Fertilizer> getAllFertilizers() {
+//
+//  }
 }

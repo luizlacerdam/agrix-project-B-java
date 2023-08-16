@@ -42,7 +42,8 @@ public class CropController {
    * Crop controller constructor.
    */
   @Autowired
-  public CropController(CropService cropService, FarmService farmService, FertilizerService fertilizerService) {
+  public CropController(CropService cropService,
+      FarmService farmService, FertilizerService fertilizerService) {
     this.cropService = cropService;
     this.farmService = farmService;
     this.fertilizerService = fertilizerService;
@@ -168,8 +169,19 @@ public class CropController {
         ))).collect(Collectors.toList());
   }
 
-  @PostMapping("/crops/{cropId}/fertilizers/{fertilizerId}")
-  public ResponseEntity<String> associateFertilizeToCrop() {
-  return null;
-  }
+//  @PostMapping("/crops/{cropId}/fertilizers/{fertilizerId}")
+//  public ResponseEntity<String> associateFertilizeToCrop(@PathVariable Long cropId, @PathVariable Long fertilizerId) {
+//    Optional<Crop> optionalCrop = cropService.getCropById(cropId);
+//    Optional<Fertilizer> optionalFertilizer = fertilizerService.getFertilizerById(fertilizerId);
+//    if (optionalCrop.isEmpty()) {
+//      ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plantação não encontrada!");
+//    }
+//    if (optionalFertilizer.isEmpty()) {
+//      ResponseEntity.status(HttpStatus.NOT_FOUND).body("Fertilizante não encontrado!");
+//    }
+//
+//
+//
+//
+//  }
 }

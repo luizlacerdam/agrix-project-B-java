@@ -109,4 +109,12 @@ public class Crop {
   public void setHarvestDate(LocalDate harvestDate) {
     this.harvestDate = harvestDate;
   }
+
+  public List<Fertilizer> getFertilizers() {
+    return fertilizers;
+  }
+
+  public void setFertilizers(List<Fertilizer> fertilizers) {
+    this.fertilizers = fertilizers;
+  }
 }
