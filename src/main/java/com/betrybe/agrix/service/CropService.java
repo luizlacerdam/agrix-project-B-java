@@ -1,5 +1,6 @@
 package com.betrybe.agrix.service;
 
+import com.betrybe.agrix.exception.NotFoundError;
 import com.betrybe.agrix.models.entities.Crop;
 import com.betrybe.agrix.models.entities.Fertilizer;
 import com.betrybe.agrix.models.repositories.CropRepository;
@@ -81,5 +82,26 @@ public class CropService {
   /**
    *  method to save fertilizer to a crop.
    */
+  public void setFertilizerToCrop(Long cropId, Long fertilizerId) {
+    Optional<Crop> optionalCrop = cropRepository.findById(cropId);
+    Optional<Fertilizer> optionalFertilizer = fertilizerRepository.findById(fertilizerId);
+
+    if (optionalCrop.isEmpty()) {
+      throw new NotFoundError("Plantação não encontrada!");
+    }
+
+    if (optionalFertilizer.isEmpty()) {
+      throw new NotFoundError("Fertilizante não encontrado!");
+    }
+
+    Crop crop = optionalCrop.get();
+    Fertilizer fertilizer = optionalFertilizer.get();
+
+    crop.getFertilizers().add(fertilizer);
+    fertilizer.getCrops().add(crop);
+
+    cropRepository.save(crop);
+    fertilizerRepository.save(fertilizer);
+  }
 
 }
