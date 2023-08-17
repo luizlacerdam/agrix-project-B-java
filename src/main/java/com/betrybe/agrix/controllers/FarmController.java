@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,24 +44,6 @@ public class FarmController {
     return ResponseEntity.status(HttpStatus.CREATED).body(newFarm);
   }
 
-  /**
-   * Atualiza farm.
-   */
-  @PutMapping("/{farmId}")
-  public ResponseEntity<ResponseDto<Farm>> updateFarm(
-      @PathVariable Long farmId, @RequestBody FarmDto farmDto) {
-    Optional<Farm> optionalFarm = farmService.updateFarm(farmId, farmDto.toFarm());
-
-    if (optionalFarm.isEmpty()) {
-      ResponseDto<Farm> responseDto = new ResponseDto<>(
-          String.format("Não foi encontrado a fazenda de ID %d", farmId), null);
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDto);
-    }
-
-    ResponseDto<Farm> responseDto = new ResponseDto<>(
-        "Fazenda atualizada com sucesso!", optionalFarm.get());
-    return ResponseEntity.ok(responseDto);
-  }
 
   /**
    * Deleta farm.

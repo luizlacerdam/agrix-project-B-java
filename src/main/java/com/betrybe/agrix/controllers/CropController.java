@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -85,25 +84,6 @@ public class CropController {
 
     return  ResponseEntity.ok(listaStream);
 
-  }
-
-  /**
-   * Atualiza crop.
-   */
-  @PutMapping("/{cropId}")
-  public ResponseEntity<ResponseDto<Crop>> updateCrop(
-      @PathVariable Long cropId, @RequestBody CropDto cropDto) {
-    Optional<Crop> optionalCrop = cropService.updateCrop(cropId, cropDto.toCrop());
-
-    if (optionalCrop.isEmpty()) {
-      ResponseDto<Crop> responseDto = new ResponseDto<>(
-          String.format("Não foi encontrado a fazenda de ID %d", cropId), null);
-      return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDto);
-    }
-
-    ResponseDto<Crop> responseDto = new ResponseDto<>(
-        "Fazenda atualizada com sucesso!", optionalCrop.get());
-    return ResponseEntity.ok(responseDto);
   }
 
   /**

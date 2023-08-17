@@ -44,6 +44,22 @@ public class Crop {
   )
   private List<Fertilizer> fertilizers;
 
+  /**
+   * quqwwieq.
+   */
+  public Crop(Long id, Long farmId, String name,
+      Double plantedArea, LocalDate plantedDate,
+      LocalDate harvestDate, List<Fertilizer> fertilizers) {
+
+    this.id = id;
+    this.farmId = farmId;
+    this.name = name;
+    this.plantedArea = plantedArea;
+    this.plantedDate = plantedDate;
+    this.harvestDate = harvestDate;
+    this.fertilizers = fertilizers;
+  }
+
   public Crop() {
 
   }

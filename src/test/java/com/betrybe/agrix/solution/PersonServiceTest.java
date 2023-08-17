@@ -33,7 +33,6 @@ public class PersonServiceTest {
   PersonRepository personRepository;
 
   @Test
-  @DisplayName("1. Teste de criação de uma nova pessoa.")
   public void testnewPerson() {
     // new person
     Person person = new Person();
@@ -65,7 +64,6 @@ public class PersonServiceTest {
   }
 
   @Test
-  @DisplayName("2. Teste para trazer uma pessoa por um id.")
   public void testGetPersonById() {
     // new person
     Person person = new Person();
@@ -91,7 +89,6 @@ public class PersonServiceTest {
   }
 
   @Test
-  @DisplayName("3. Test para trazer um error ao buscar por id de uma pessoa com o repository mockado.")
   public void testGetPersonNotFound() {
     Mockito.when(personRepository.findById(anyLong()))
         .thenReturn(Optional.empty());
@@ -102,7 +99,6 @@ public class PersonServiceTest {
   }
 
   @Test
-  @DisplayName("4. Teste para trazer uma pessoa por um username.")
   public void testGetPersonByUsername() {
     // new person
     Person person = new Person();
@@ -128,7 +124,6 @@ public class PersonServiceTest {
   }
 
   @Test
-  @DisplayName("5. Test para trazer um error ao buscar por username de uma pessoa com o repository mockado.")
   public void testGetPersonByUsernameNotFound() {
     Mockito.when(personRepository.findById(anyLong()))
         .thenReturn(Optional.empty());
