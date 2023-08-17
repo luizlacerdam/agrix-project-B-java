@@ -104,7 +104,11 @@ public class CropService {
     fertilizerRepository.save(fertilizer);
   }
 
-  public List<Fertilizer> getFertilizerByCropId( Long cropId) {
+  /**
+   *  Returns all fertilizers by crop Id.
+   */
+  public List<Fertilizer> getFertilizerByCropId(Long cropId) {
+
     Optional<Crop> optionalCrop = cropRepository.findById(cropId);
 
     if (optionalCrop.isEmpty()) {

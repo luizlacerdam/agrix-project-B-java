@@ -180,5 +180,11 @@ public class CropController {
         .body("Fertilizante e plantação associados com sucesso!");
   }
 
+  @GetMapping("/crops/{cropId}/fertilizers")
+  public ResponseEntity<List<Fertilizer>> getAllFertilizersByCropId(
+      @PathVariable Long cropId) {
+    List<Fertilizer> fertilizers = cropService.getFertilizerByCropId(cropId);
+    return ResponseEntity.ok(fertilizers);
+  }
 
 }
