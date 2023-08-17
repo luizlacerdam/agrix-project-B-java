@@ -176,7 +176,8 @@ public class CropController {
   public ResponseEntity<String> associateFertilizeToCrop(
       @PathVariable Long cropId, @PathVariable Long fertilizerId) {
     cropService.setFertilizerToCrop(cropId, fertilizerId);
-    return ResponseEntity.status(HttpStatus.CREATED).body("Fertilizante e plantação associados com sucesso!");
+    return ResponseEntity.status(HttpStatus.CREATED)
+        .body("Fertilizante e plantação associados com sucesso!");
   }
 
 
