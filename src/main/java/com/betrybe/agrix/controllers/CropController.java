@@ -184,7 +184,7 @@ public class CropController {
       ResponseEntity.status(HttpStatus.NOT_FOUND).body("Fertilizante não encontrado!");
     }
 
-    //cropService.saveNewFertilizer(optionalCrop.get(), optionalFertilizer.get());
+    cropService.saveNewFertilizer(optionalCrop.get(), optionalFertilizer.get());
 
     return ResponseEntity.ok("Fertilizante e plantação associados com sucesso!");
   }

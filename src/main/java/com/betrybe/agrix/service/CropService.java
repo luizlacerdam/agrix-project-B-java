@@ -3,11 +3,14 @@ package com.betrybe.agrix.service;
 import com.betrybe.agrix.models.entities.Crop;
 import com.betrybe.agrix.models.entities.Fertilizer;
 import com.betrybe.agrix.models.repositories.CropRepository;
+import com.betrybe.agrix.models.repositories.FertilizerRepository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import org.hibernate.mapping.Any;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,12 +21,15 @@ public class CropService {
 
   private CropRepository cropRepository;
 
+  private FertilizerRepository fertilizerRepository;
+
   /**
    * Crop constructor.
    */
   @Autowired
-  public CropService(CropRepository cropRepository) {
+  public CropService(CropRepository cropRepository, FertilizerRepository fertilizerRepository) {
     this.cropRepository = cropRepository;
+    this.fertilizerRepository = fertilizerRepository;
   }
 
   public Crop insertCrop(Crop crop) {
@@ -72,12 +78,8 @@ public class CropService {
     return cropRepository.findAll();
   }
 
-  //  /**
-  //   *  method to save fertilizer to a crop.
-  //   */
-  //  public Crop saveNewFertilizer(Crop crop, Fertilizer fertilizer) {
-  //    List<Fertilizer> listaFertilizers = crop.getFertilizers();
-  //    listaFertilizers.add(fertilizer);
-  //    return cropRepository.save(crop);
-  //  }
+  /**
+   *  method to save fertilizer to a crop.
+   */
+
 }
