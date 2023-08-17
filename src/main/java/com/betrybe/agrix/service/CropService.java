@@ -104,4 +104,15 @@ public class CropService {
     fertilizerRepository.save(fertilizer);
   }
 
+  public List<Fertilizer> getFertilizerByCropId( Long cropId) {
+    Optional<Crop> optionalCrop = cropRepository.findById(cropId);
+
+    if (optionalCrop.isEmpty()) {
+      throw new NotFoundError("Plantação não encontrada!");
+    }
+
+    Crop crop = optionalCrop.get();
+
+    return crop.getFertilizers();
+  }
 }
