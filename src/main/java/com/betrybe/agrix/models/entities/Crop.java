@@ -53,13 +53,15 @@ public class Crop {
    * Crop entity constructor.
    */
   public Crop(Long id, Long farmId, String name,
-      Double plantedArea, LocalDate plantedDate, LocalDate harvestDate) {
+      Double plantedArea, LocalDate plantedDate,
+      LocalDate harvestDate, List<Fertilizer> fertilizers) {
     this.id = id;
     this.farmId = farmId;
     this.name = name;
     this.plantedArea = plantedArea;
     this.plantedDate = plantedDate;
     this.harvestDate = harvestDate;
+    this.fertilizers = fertilizers;
   }
 
   public Long getId() {
@@ -108,6 +110,14 @@ public class Crop {
 
   public void setHarvestDate(LocalDate harvestDate) {
     this.harvestDate = harvestDate;
+  }
+
+  public List<Fertilizer> getFertilizers() {
+    return fertilizers;
+  }
+
+  public void setFertilizers(List<Fertilizer> fertilizers) {
+    this.fertilizers = fertilizers;
   }
 
 }

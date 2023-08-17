@@ -1,4 +1,4 @@
-package com.betrybe.agrix.solution.unit;
+package com.betrybe.agrix.solution;
 
 import com.betrybe.agrix.ebytr.staff.entity.Person;
 import com.betrybe.agrix.ebytr.staff.exception.PersonNotFoundException;

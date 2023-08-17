@@ -11,11 +11,11 @@ public record CropDto(Long id, String name, Long farmId, Double plantedArea,
 
 
   public Crop toCrop(Long farmId) {
-    return new Crop(id, farmId, name, plantedArea, plantedDate, harvestDate);
+    return new Crop(id, farmId, name, plantedArea, plantedDate, harvestDate, null);
   }
 
   public Crop toCrop() {
-    return new Crop(id, farmId, name, plantedArea, plantedDate, harvestDate);
+    return new Crop(id, farmId, name, plantedArea, plantedDate, harvestDate, null);
   }
 
 }
