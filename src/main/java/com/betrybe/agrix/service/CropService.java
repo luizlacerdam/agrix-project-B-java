@@ -6,6 +6,7 @@ import com.betrybe.agrix.models.repositories.CropRepository;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import org.hibernate.mapping.Any;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -71,4 +72,12 @@ public class CropService {
     return cropRepository.findAll();
   }
 
+  //  /**
+  //   *  method to save fertilizer to a crop.
+  //   */
+  //  public Crop saveNewFertilizer(Crop crop, Fertilizer fertilizer) {
+  //    List<Fertilizer> listaFertilizers = crop.getFertilizers();
+  //    listaFertilizers.add(fertilizer);
+  //    return cropRepository.save(crop);
+  //  }
 }

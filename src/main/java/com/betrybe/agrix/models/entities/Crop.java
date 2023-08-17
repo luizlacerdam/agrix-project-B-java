@@ -54,14 +54,13 @@ public class Crop {
    */
   public Crop(Long id, Long farmId, String name,
       Double plantedArea, LocalDate plantedDate,
-      LocalDate harvestDate, List<Fertilizer> fertilizers) {
+      LocalDate harvestDate) {
     this.id = id;
     this.farmId = farmId;
     this.name = name;
     this.plantedArea = plantedArea;
     this.plantedDate = plantedDate;
     this.harvestDate = harvestDate;
-    this.fertilizers = fertilizers;
   }
 
   public Long getId() {
@@ -112,12 +111,9 @@ public class Crop {
     this.harvestDate = harvestDate;
   }
 
-  public List<Fertilizer> getFertilizers() {
-    return fertilizers;
-  }
+  //  public List<Fertilizer> getFertilizers() {
+  //    return fertilizers;
+  //  }
 
-  public void setFertilizers(List<Fertilizer> fertilizers) {
-    this.fertilizers = fertilizers;
-  }
 
 }

@@ -39,12 +39,11 @@ public class Fertilizer {
   /**
    * Constructor preenchido.
    */
-  public Fertilizer(Long id, String name, String brand, String composition, List<Crop> crops) {
+  public Fertilizer(Long id, String name, String brand, String composition) {
     this.id = id;
     this.name = name;
     this.brand = brand;
     this.composition = composition;
-    this.crops = crops;
   }
 
   public Long getId() {

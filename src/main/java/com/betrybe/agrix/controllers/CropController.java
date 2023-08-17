@@ -169,19 +169,25 @@ public class CropController {
         ))).collect(Collectors.toList());
   }
 
-  /*
-    @PostMapping("/crops/{cropId}/fertilizers/{fertilizerId}")
-    public ResponseEntity<String> associateFertilizeToCrop(
-    @PathVariable Long cropId, @PathVariable Long fertilizerId) {
-      Optional<Crop> optionalCrop = cropService.getCropById(cropId);
-      Optional<Fertilizer> optionalFertilizer = fertilizerService.getFertilizerById(fertilizerId);
-      if (optionalCrop.isEmpty()) {
-        ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plantação não encontrada!");
-      }
-      if (optionalFertilizer.isEmpty()) {
-        ResponseEntity.status(HttpStatus.NOT_FOUND).body("Fertilizante não encontrado!");
-      }
-    }
+  /**
+   * method to save fertilizer to a crop.
    */
+  @PostMapping("/crops/{cropId}/fertilizers/{fertilizerId}")
+  public ResponseEntity<String> associateFertilizeToCrop(
+      @PathVariable Long cropId, @PathVariable Long fertilizerId) {
+    Optional<Crop> optionalCrop = cropService.getCropById(cropId);
+    Optional<Fertilizer> optionalFertilizer = fertilizerService.getFertilizerById(fertilizerId);
+    if (optionalCrop.isEmpty()) {
+      ResponseEntity.status(HttpStatus.NOT_FOUND).body("Plantação não encontrada!");
+    }
+    if (optionalFertilizer.isEmpty()) {
+      ResponseEntity.status(HttpStatus.NOT_FOUND).body("Fertilizante não encontrado!");
+    }
+
+    //cropService.saveNewFertilizer(optionalCrop.get(), optionalFertilizer.get());
+
+    return ResponseEntity.ok("Fertilizante e plantação associados com sucesso!");
+  }
+
 
 }
