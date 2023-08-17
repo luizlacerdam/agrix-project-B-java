@@ -1,5 +1,6 @@
 package com.betrybe.agrix.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -37,6 +38,7 @@ public class Crop {
   private LocalDate harvestDate;
 
   @ManyToMany
+  @JsonIgnore
   @JoinTable(
       name = "crop_fertilizer",
       joinColumns = @JoinColumn(name = "fertilizer_id"),
